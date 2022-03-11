@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class CodigoMorseTest {
 
     private CodigoMorse codigoMorse;
@@ -17,9 +18,50 @@ public class CodigoMorseTest {
     }
 
     @Test
-    public void convertParaMorse (){
-        List<String> resultado = this.codigoMorse.convertSOS("SOS");
-        List<String> expected = Arrays.asList("-", ".", "-");
+    public void convertLetraS (){
+        List<String> resultado = this.codigoMorse.convertWordToMorse("S");
+        List<String> expected = Arrays.asList("...");
+
+        Assert.assertEquals(expected, resultado);
+    }
+
+    @Test
+    public void convertLetraO (){
+        List<String> resultado = this.codigoMorse.convertWordToMorse("O");
+        List<String> expected = Arrays.asList("---");
+
+        Assert.assertEquals(expected, resultado);
+    }
+
+    @Test
+    public void convertPalavraSOSMaiusculo (){
+        List<String> resultado = this.codigoMorse.convertWordToMorse("SOS");
+        List<String> expected = Arrays.asList("...","---","...");
+
+        Assert.assertEquals(expected, resultado);
+    }
+
+    @Test
+    public void convertPalavraSOSMinusculo (){
+        List<String> resultado = this.codigoMorse.convertWordToMorse("sos");
+        List<String> expected = Arrays.asList("...","---","...");
+
+        Assert.assertEquals(expected, resultado);
+    }
+
+    @Test
+    public void convertPalavraVazia (){
+        List<String> resultado = this.codigoMorse.convertWordToMorse("");
+        List<String> expected = Arrays.asList();
+
+        Assert.assertEquals(expected, resultado);
+    }
+
+    @Test
+    public void convertPalavraNula (){
+        List<String> resultado = this.codigoMorse.convertWordToMorse(null);
+        List<String> expected = Arrays.asList();
+
         Assert.assertEquals(expected, resultado);
     }
 }
