@@ -1,19 +1,27 @@
 package com.adriano.codigo_morse;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CodigoMorse {
 
-    public List<String> convertSOS(String word) {
-        Map<String,String> mapa = new HashMap<>();
-        mapa.put("S","-");
-        mapa.put("O",".");
-        //pega a palavra e percorrer letra a letra
-        //para cada letra descobrir no mapa qual o código morse dela
-        //adicionar o código morse em uma lista
-        return null;
+    private final Map<Character,String> mapa = new HashMap<>();
+
+    public CodigoMorse() {
+        mapa.put('S',"...");
+        mapa.put('O',"---");
+    }
+
+    public List<String> convertWordToMorse(String word) {
+        List<String> result = new ArrayList<>();
+
+        if (word == null)
+            return result;
+
+        for (int i = 0; i < word.length(); i++) {
+            result.add(mapa.get(word.toUpperCase().charAt(i)));
+        }
+
+        return result;
     }
 
 }
